@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -19,19 +21,29 @@ function Todo() {
   return (
     <div>
       <h1>Todo List</h1>
-      <input
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
         type="text"
         placeholder="Add a new todo"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
       />
-      <button onClick={addTodo}>Add</button>
+      <br />
+      <br />
+      <Button variant="contained" onClick={addTodo}>
+        Add
+      </Button>
       <ul>
         {todos.map((todo, index) => (
-            <li key={index}>
-            {todo}
-            <button onClick={() => removeTodo(index)}>Remove</button>
-            </li>
+          <li key={index}>
+            <br />
+            <h2>{todo}</h2>
+
+            <Button variant="outlined" onClick={() => removeTodo(index)}>
+              Remove
+            </Button>
+          </li>
         ))}
       </ul>
     </div>
